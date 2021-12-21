@@ -6,13 +6,17 @@
 
 {% block content %}
 
+{% if not user.is_authenticated %} 
+
 <div class="container">
  	
 <a href="/login" class="btn btn-primary btn-lg btn-block">Login</a>
 <br>
 
 </div>
+ {% endif %}
 
+{% if  user.is_authenticated %}
 <div class="container">
 
 Welcome {{ request.user}}
@@ -36,6 +40,6 @@ Welcome {{ request.user}}
 
 
 </div>
-
+ {% endif %}
 
 {% endblock %}

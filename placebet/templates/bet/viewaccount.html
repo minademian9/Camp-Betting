@@ -1,0 +1,63 @@
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Account</title>
+  </head>
+  <body>
+
+<div>
+
+Welcome {{ request.user}}
+
+</div>
+
+
+
+<div>      
+  
+  {% if player %}
+
+
+    <ul>
+        <li> Name: {{ player.name }} </li>
+         <li> Current Wallet : {{ player.wallet }} </li>
+    
+    </ul>
+
+
+      {% if bets_answer %}
+      <h3>Your bets list</h3>
+          {% for b in bets_answer %}
+          
+          <ul>
+              <li> The Bet --> {{ b.bet }} </li>
+              <li> Your choice --> {{ b.choice }} </li>
+              <li> Actual Solution --> {{ b.bet.solution }} </li>
+              <li> Bet Amount --> {{ b.value }} </li>
+               <li> Bet posted by --> {{ b.bet.owner }} </li>
+          
+          </ul>
+            <br>
+           {% endfor %}
+      {% endif %}
+
+  {% endif %}
+
+
+
+</div>
+
+
+<br>
+<br>
+<br>
+<div> <a href="/">return to Homepage</a> </div>
+
+
+  </body>
+
+
+</html>

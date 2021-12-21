@@ -1,0 +1,79 @@
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>View Bets</title>
+  </head>
+  <body>
+
+<div>      
+  
+  {% if all_bets %}
+
+    <p>You can only submit once & Cannot exceed wallet amount</p> <br> <br>
+    
+    <ul>
+    {% for bet in all_bets %}
+
+      {% if bet.closed == False %} 
+      
+        <li> {{ bet.bet_text }} </li>
+
+        <form id="bet-{{bet.id}}"  action="/mybet/" method="post">
+                        {% csrf_token %}
+                        
+          <div class="input-field">
+            
+        <input type="radio" id="{{bet.id}}_with" required id="bet_choice"  name="bet_choice" value="With-{{bet.id}}" class="validate">
+        <label>Agree that bet will happen</label><br>
+
+              </div>
+
+          <div class="input-field">
+              
+        <input type="radio" id="{{bet.id}}_against" required id="bet_choice" name="bet_choice" value="Against-{{bet.id}}" class="validate">
+        <label >Disagree that bet will NOT happen</label><br>
+          </div>
+
+          <input type="number" id="{{bet.id}}-value" name="bet_value" required id="bet_value"  placeholder="Place your bet value" class="validate" >
+        
+          </div>
+        
+         <li> Submitted by {{ bet.owner }} </li>
+     
+         <br> <br>
+
+         <div class="text-right mt-4">
+                        <button type="submit"  v-on:click = "sendregistration()" class="waves-effect btn-large btn-large-white px-4 black-text">SUBMIT</button>
+                    </div>
+
+
+        </form>
+    <br>
+<br>
+    {% endif %}
+    {% endfor %}
+    
+    </ul>
+
+
+{% else %}
+    <p>No Bets are available yet.</p>
+{% endif %}
+
+
+
+</div>
+
+
+<br>
+<br>
+<br>
+<div> <a href="/">return to Homepage</a> </div>
+
+  </body>
+
+
+</html>

@@ -1,0 +1,100 @@
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>My Bets</title>
+  </head>
+  <body>
+
+<div>
+
+Welcome {{ request.user}}
+
+</div>
+
+
+
+<div>      
+  
+  {% if bets %}
+
+
+  <ul>
+    {% for bet in bets %}
+        <li> {{ bet.bet_text }} </li>
+        <li> {{ bet.pub_date }} </li>
+        <!-- <li> Is it closed yet: {{ bet.closed }} </li> -->
+
+         {% if bet.solution == 'With'   %}     
+
+          <li> Result: Bet happened </li>
+
+          {% endif %}
+
+        {% if bet.solution == 'Against'   %}     
+
+          <li> Result: Bet did NOT happen </li>
+
+          {% endif %}
+
+
+      {% if bet.closed == False %}
+       <form id="close-bet"  action="/closebet/" method="post">
+                  {% csrf_token %}
+          <div class="input-field">
+            
+        <input type="radio" id="{{bet.id}}_with" required id="bet_solution" name="bet_solution" value="With-{{bet.id}}">
+        <label>Did it happen </label><br>
+
+              </div>
+
+          <div class="input-field">
+              
+        <input type="radio" id="{{bet.id}}_against" required id="bet_solution"  name="bet_solution" value="Against-{{bet.id}}">
+        <label >It did not happen</label><br>
+          </div>
+        
+     
+         <br> <br>
+
+         <div class="text-right mt-4">
+                        <button type="submit" class="waves-effect btn-large btn-large-white px-4 black-text">Close the bet</button>
+                    </div>
+
+
+        </form>
+    <br>
+<br>
+    
+    {% endif %}
+
+    <br>
+<br>
+    
+    {% endfor %}
+    
+    </ul>
+
+
+{% else %}
+    <p>No Bets are available today.</p>
+{% endif %}
+
+
+
+</div>
+
+
+<br>
+<br>
+<br>
+<div> <a href="/">return to Homepage</a> </div>
+
+
+
+  </body>
+
+
+</html>

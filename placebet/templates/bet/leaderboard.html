@@ -1,0 +1,49 @@
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Leadership Board </title>
+  </head>
+  <body>
+
+
+<div>      
+  
+  {% if players %}
+
+
+    <table>
+  <tr>
+    <th>Name</th>
+    <th>Wallet</th>
+  </tr>
+  {% for p in players %}
+  <tr>
+    <td>{{ p.name }} </td>
+    <td>{{ p.wallet }}</td>
+  </tr>
+  {% endfor %}
+</table> 
+
+
+{% else %}
+    <p>No Profile found. Please <a href="/admin"> login</a>  </p>
+{% endif %}
+
+
+
+</div>
+
+
+<br>
+<br>
+<br>
+<div> <a href="/">return to Homepage</a> </div>
+
+
+  </body>
+
+
+</html>

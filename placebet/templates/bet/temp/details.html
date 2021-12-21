@@ -1,0 +1,36 @@
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Place your bet here</title>
+  </head>
+  <body>
+
+<div>      
+  
+  {% if all_bets %}
+    <ul>
+    {% for bet in all_bets %}
+        <li>{{ bet.bet_text }}</li>
+        <li>{{ bet.pub_date }}</li>
+        <li>{{ bet.owner }}</li>
+        <br>
+        <br>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No bets are available.</p>
+{% endif %}
+
+</div>
+
+
+
+
+
+  </body>
+
+
+</html>

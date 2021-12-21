@@ -1,0 +1,53 @@
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>All Bets</title>
+  </head>
+  <body>
+
+
+
+
+<div>      
+  
+
+
+
+
+      {% if bets %}
+      <h3>List of Bets</h3>
+          {% for b in bets %}
+          
+          <ul>
+              <li> The Bet --> {{ b.bet_text }} </li>
+              <li> Date Published --> {{ b.pub_date }} </li>
+              <li> Posted by --> {{ b.owner }} </li>
+              <li> What is the answer --> {{ b.solution }} </li>
+              <li> Is it closed --> {{ b.closed }} </li>
+          
+          </ul>
+            <br>
+            <br>
+           {% endfor %}
+      {% endif %}
+
+
+
+
+
+</div>
+
+
+<br>
+<br>
+<br>
+<div> <a href="/">return to Homepage</a> </div>
+
+
+  </body>
+
+
+</html>

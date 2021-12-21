@@ -1,0 +1,3 @@
+[tool.poetry.dependencies]
+django
+w3m

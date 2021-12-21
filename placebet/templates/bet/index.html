@@ -10,12 +10,14 @@
 
 
 
- <!-- {% if not user.is_authenticated %} -->
+ {% if not user.is_authenticated %} 
 
-<!-- <h3> <a href="/login">Login</a> </h3> -->
+<h3> <a href="/login">Login</a> </h3>
 
-  <!-- {% endif %} -->
+   {% endif %}
 
+
+   {% if  user.is_authenticated %}
 
 <div>
 
@@ -41,7 +43,7 @@ Welcome {{ request.user}}
 
 </div>
 
-
+  {% endif %}
 
 
 

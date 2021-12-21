@@ -51,7 +51,7 @@ def details(request):
 
 
 
-# @login_required
+@login_required
 def addBet(request):
     template = loader.get_template('bet/placebet.html')
     context = {
@@ -60,9 +60,10 @@ def addBet(request):
     }
     return HttpResponse(  template.render(context, request)   )
 
-
+@login_required
 def accountView(request):
     template = loader.get_template('bet/viewaccount.html')
+    
     context = {
         # 'all_bets': all_bets,
         'player': Player.objects.filter(name=request.user)[0],
@@ -71,7 +72,7 @@ def accountView(request):
     return HttpResponse(  template.render(context, request)   )
 
 
-
+@login_required
 def userbets(request):
     template = loader.get_template('bet/mybet.html')
     mybets = Bet.objects.filter(owner=request.user)
@@ -82,7 +83,7 @@ def userbets(request):
     }
     return HttpResponse(  template.render(context, request)   )
 
-
+@login_required
 def leaderboardView(request):
     template = loader.get_template('bet/leaderboard.html')
     
@@ -92,6 +93,7 @@ def leaderboardView(request):
     }
     return HttpResponse(  template.render(context, request)   )
 
+@login_required
 def allbets(request):
     template = loader.get_template('bet/viewall.html')
     mybets = Bet.objects.all()

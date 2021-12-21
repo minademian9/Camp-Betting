@@ -1,1 +1,1 @@
-web: gunicorn campGamble.wsgi --log-file -
+web: gunicorn campGamble.wsgi  --log-file -

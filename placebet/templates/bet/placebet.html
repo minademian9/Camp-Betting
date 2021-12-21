@@ -1,99 +1,50 @@
+{% extends "template.html" %}
 
 
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Place your bet here</title>
-
- <!-- <script type = "text/javascript" src = "https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
-
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.js" integrity="sha512-bYkaBWaFtfPIMYt9+CX/4DWgfrjcHinjerNYxQmQx1VM76eUsPPKZa5zWV8KksVkBF/DaHSADCwil2J5Uq2ctA==" crossorigin="anonymous"></script> -->
-
- <script type = "text/javascript" src ="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
+{% block title %} Place your bet here {% endblock %}
 
 
-    <!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
-
-
-  </head>
-
-
-
-
-
-  <body>
-
-<div>      
+{% block content %}
+<div class="container">      
   
 Welcome {{ request.user}}
 
 
 </div>
 
- <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 tm-register-col-l">
+ <div class="container">
 
-            <header class="mb-5">
-                <h3 class="mt-0 text-white">Add Bet </h3>
-                <p class="grey-text">Please follow the instructions and add all the fields correctly before submitting.</p>
+            <header class="">
+                <h3 class="">Add Bet </h3>
+                <p class="">Please follow the instructions and add all the fields correctly before submitting.</p>
             </header>
 
-        </div>
 
-        <div id="registerform" class="row tm-register-row">
-            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 tm-register-col-l">
+
+
+        <div class="form-group" id="registerform" >
+            <div class="">
                 <form id="jsonForm"   action="/addbet/" method="post">
                             {% csrf_token %}
                   
                     <div class="input-field">
-                        <input placeholder="What is the bet ?" required id="bet_text" name="bet_text" type="text" class="validate">
+                        <input class="form-control" placeholder="What is the bet ?" required id="bet_text" name="bet_text" type="text" class="validate">
                     </div>
                   
                     <br>
                     <br>
                  
 
-                    <div class="text-right mt-4">
-                        <button type="submit" class="waves-effect btn-large btn-large-white px-4 black-text">SUBMIT</button>
+                    <div class="">
+                        <button type="submit" class="waves-effect btn btn-default">SUBMIT</button>
                     </div>
 
                 </form>
         </div>
 
-
-<br>
-<br>
-<br>
-<div> <a href="/">return to Homepage</a> </div>
+</div>
 
 
-  </body>
-
-<script> 
-
-// $("#jsonForm").ajax({
-//   type: 'POST',
-//   url: '/addbet',
-//   contentType: 'application/json',
-//   dataType: 'json',
-//   data: JSON.stringify(payload)
-// });
 
 
-// function getFormData($form){
-//     var unindexed_array = $form.serializeArray();
-//     var indexed_array = {};
-
-//     $.map(unindexed_array, function(n, i){
-//         indexed_array[n['name']] = n['value'];
-//     });
-
-//     return indexed_array;
-// }
-
-// var $form = $("#jsonForm");
-// var data = getFormData($form);
-
-</script>
-
-</html>
+{% endblock %}

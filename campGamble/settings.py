@@ -10,6 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
+import django_heroku
+import os
+
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -75,13 +78,29 @@ WSGI_APPLICATION = 'campGamble.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'd7he6mgokbilje',
+        'USER': 'jqprziskkbqnwr',
+        'PASSWORD': 'b65cd44ee6ff3ed523d33132f659a019dfcc1dd910285c4be22ea76191b6fce8',
+        'HOST': 'ec2-34-249-148-230.eu-west-1.compute.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
+import dj_database_url
+
+db_from_env = dj_database_url.config(conn_max_age=600)
+DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -129,3 +148,8 @@ ALLOWED_HOSTS = ['*']
 X_FRAME_OPTIONS = '*'
 
 LOGIN_REDIRECT_URL = '/' # URL redirecting after a successful authentication
+
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
+# Activate Django-Heroku.
+django_heroku.settings(locals())

@@ -36,7 +36,9 @@
         <li><a href="/leadershipboard">Leadership Board</a></li>
         <li><a href="/allbets">All Bets</a></li>
 
+          {% if  user.is_authenticated %}
         <li ><a class="text-right" href="/logout">Logout</a></li>
+            {% endif %}
     </ul>
   </div>
 </nav>

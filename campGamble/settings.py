@@ -26,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-+9!+t@$5spqv)mj@8mxoaw(_c_-h^4g@6s1ohy7fi)i@3zc86z'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -151,5 +151,8 @@ LOGIN_REDIRECT_URL = '/' # URL redirecting after a successful authentication
 
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
+
+SESSION_COOKIE_AGE = 720 *60
+
 # Activate Django-Heroku.
 django_heroku.settings(locals())

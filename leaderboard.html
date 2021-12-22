@@ -1,0 +1,42 @@
+{% extends "template.html" %}
+
+
+{% block title %} Leadership Board {% endblock %}
+
+
+{% block content %}
+
+
+<div class="container">      
+  
+  {% if players %}
+
+
+    <table class="table">
+  <tr>
+    <th>Ranking</th>
+    <th>Name</th>
+    <th>Wallet</th>
+  </tr>
+  {% for p in players %}
+  <tr>
+    <td> {{ forloop.counter }} </td>
+    <td>{{ p.name }} </td>
+    <td>{{ p.wallet }}</td>
+  </tr>
+  {% endfor %}
+</table> 
+
+
+{% else %}
+    <p>No Profile found. Please <a href="/login"> login</a>  </p>
+{% endif %}
+
+
+
+</div>
+
+
+
+
+ {% endblock %}

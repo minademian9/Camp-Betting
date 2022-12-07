@@ -1,17 +1,15 @@
+{% extends "template.html" %}
 
 
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>All Bets</title>
-  </head>
-  <body>
+{% block title %} All Bets {% endblock %}
+
+
+{% block content %}
 
 
 
 
-<div>      
+<div class="container">      
   
 
 
@@ -19,19 +17,48 @@
 
       {% if bets %}
       <h3>List of Bets</h3>
-          {% for b in bets %}
-          
-          <ul>
-              <li> The Bet --> {{ b.bet_text }} </li>
-              <li> Date Published --> {{ b.pub_date }} </li>
-              <li> Posted by --> {{ b.owner }} </li>
-              <li> What is the answer --> {{ b.solution }} </li>
-              <li> Is it closed --> {{ b.closed }} </li>
-          
-          </ul>
-            <br>
-            <br>
-           {% endfor %}
+                  
+                 
+            {% for b in bets %}
+
+            <table class="table">
+            <tr>
+              <td>The Bet </td>
+              <td> {{ b.bet_text }}</td>
+              
+            </tr>
+
+            <tr>
+              <td>Date Published </td>
+              <td> {{ b.pub_date }}</td>
+              
+            </tr>
+
+            <tr>
+              <td>Posted by </td>
+              <td > {{ b.owner }} </td>
+              
+            </tr>
+
+            <tr>
+              <td>What is the answer  </td>
+              <td> {{ b.solution }}</td>
+              
+            </tr>
+
+            <tr>
+              <td>Is it closed  </td>
+              <td> {{ b.closed }} </td>
+              
+            </tr>
+
+              </table> 
+
+              <br> <br>
+
+            {% endfor %}
+                   
+
       {% endif %}
 
 
@@ -41,13 +68,5 @@
 </div>
 
 
-<br>
-<br>
-<br>
-<div> <a href="/">return to Homepage</a> </div>
 
-
-  </body>
-
-
-</html>
+ {% endblock %}

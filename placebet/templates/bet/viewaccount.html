@@ -1,29 +1,20 @@
+{% extends "template.html" %}
 
 
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Account</title>
-  </head>
-  <body>
-
-<div>
-
-Welcome {{ request.user}}
-
-</div>
+{% block title %} My Account {% endblock %}
 
 
+{% block content %}
 
-<div>      
+
+<div class="container">      
   
   {% if player %}
 
 
-    <ul>
-        <li> Name: {{ player.name }} </li>
-         <li> Current Wallet : {{ player.wallet }} </li>
+    <ul class="container">
+        <h3 class="display-3"> Name: <p class="text-primary">  {{ player.name }}</p>  </h3>
+         <h3 class="display-3"> Current Wallet :  <p class="text-primary">  {{ player.wallet }} </p> </h3>
     
     </ul>
 
@@ -33,11 +24,11 @@ Welcome {{ request.user}}
           {% for b in bets_answer %}
           
           <ul>
-              <li> The Bet --> {{ b.bet }} </li>
-              <li> Your choice --> {{ b.choice }} </li>
-              <li> Actual Solution --> {{ b.bet.solution }} </li>
-              <li> Bet Amount --> {{ b.value }} </li>
-               <li> Bet posted by --> {{ b.bet.owner }} </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center" > The Bet --> {{ b.bet }} </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center" > Your choice --> {{ b.choice }} </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center"> Actual Solution --> {{ b.bet.solution }} </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center"> Bet Amount --> {{ b.value }} </li>
+               <li class="list-group-item d-flex justify-content-between align-items-center"> Bet posted by --> {{ b.bet.owner }} </li>
           
           </ul>
             <br>
@@ -51,13 +42,4 @@ Welcome {{ request.user}}
 </div>
 
 
-<br>
-<br>
-<br>
-<div> <a href="/">return to Homepage</a> </div>
-
-
-  </body>
-
-
-</html>
+ {% endblock %}
